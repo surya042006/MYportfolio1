@@ -8,6 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use(express.static("frontend"));
+
 console.log("Mongo URL:", process.env.MONGO_URL);
 
 const client = new MongoClient(process.env.MONGO_URL);
