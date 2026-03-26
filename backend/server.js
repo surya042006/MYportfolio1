@@ -7,8 +7,13 @@ const { MongoClient } = require("mongodb");
 const app = express();
 app.use(cors());
 app.use(express.json());
+// 🔥 PASTE HERE (RIGHT PLACE)
+app.use(express.static(path.join(__dirname, "../frontend")));
 
-app.use(express.static("frontend"));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+});
+// 🔥 END
 
 console.log("Mongo URL:", process.env.MONGO_URL);
 
